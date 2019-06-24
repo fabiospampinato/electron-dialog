@@ -15,7 +15,7 @@ const Dialog = {
     noLink: true
   },
 
-  open ( options, browserWindow?: Electron.BrowserWindow ) {
+  open ( options, browserWindow?: Electron.BrowserWindow ): number {
 
     if ( !browserWindow && !isRenderer ) throw new Error ( 'You need to provide a BrowserWindow object from the main process' );
 
@@ -25,19 +25,19 @@ const Dialog = {
 
   },
 
-  alert ( message: string, browserWindow?: Electron.BrowserWindow ) {
+  alert ( message: string, browserWindow?: Electron.BrowserWindow ): void {
 
-    return Dialog.open ( {message}, browserWindow );
+    Dialog.open ( {message}, browserWindow );
 
   },
 
-  confirm ( message: string, browserWindow?: Electron.BrowserWindow ) {
+  confirm ( message: string, browserWindow?: Electron.BrowserWindow ): boolean {
 
     return !!Dialog.choice ( message, ['Cancel', 'Yes'], browserWindow );
 
   },
 
-  choice ( message: string, buttons: string[], browserWindow?: Electron.BrowserWindow ) {
+  choice ( message: string, buttons: string[], browserWindow?: Electron.BrowserWindow ): number {
 
     buttons = [...buttons].reverse ();
 
