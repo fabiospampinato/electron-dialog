@@ -27,13 +27,13 @@ const Dialog = {
 
   alert ( message: string, browserWindow?: Electron.BrowserWindow ) {
 
-    return this.open ( {message}, browserWindow );
+    return Dialog.open ( {message}, browserWindow );
 
   },
 
   confirm ( message: string, browserWindow?: Electron.BrowserWindow ) {
 
-    return !!this.choice ( message, ['Cancel', 'Yes'], browserWindow );
+    return !!Dialog.choice ( message, ['Cancel', 'Yes'], browserWindow );
 
   },
 
@@ -41,7 +41,7 @@ const Dialog = {
 
     buttons = [...buttons].reverse ();
 
-    const buttonId = this.open ( {message, buttons, defaultId: 0}, browserWindow );
+    const buttonId = Dialog.open ( {message, buttons, defaultId: 0}, browserWindow );
 
     return buttons.length - buttonId - 1;
 
